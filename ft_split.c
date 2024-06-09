@@ -30,15 +30,25 @@ int	word_count(char *str)
 	return (wc);
 }
 
-void	allocate_words(char **words, char *str)
+void	free_remainder(char **out, int k)
+{
+	int	i;
+
+	i = 0;
+	while (i < k)
+		free(out[i++]);
+	free(out);
+}
+
+char	**ft_split(char *str)
 {
 	int		i;
 	int		j;
 	int		k;
-	int		step;
+	char	**out;
 
+	out = (char **)malloc(sizeof(char *) * (word_count(str) + 1));
 	i = 0;
-	k = 0;
 	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
@@ -46,33 +56,18 @@ void	allocate_words(char **words, char *str)
 		j = i;
 		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
 			i++;
+		k = 0;
 		if (i > j)
 		{
 			out[k] = (char *)malloc(sizeof(char) * ((i - j) + 1));
 			if (!out[k])
 			{
-				step = 0;
-				while (step < k)
-				{
-					free(out[step++]);
-				}
-				free(out);
+				free_remainder(out, k);
 				return (NULL);
 			}
 			ft_strncpy(out[k++], &str[j], i - j);
 		}
 	}
 	out[k] = NULL;
-	return (out);
-}
-
-char	**ft_split(char *str)
-{
-	char	**out;
-
-	out = (char **)malloc(sizeof(char *) * (word_count(str) + 1));
-	if (!out)
-		return (NULL);
-	allocate_words(out, str);
 	return (out);
 }

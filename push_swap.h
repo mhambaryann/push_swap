@@ -7,4 +7,5 @@
 
 char	**ft_split(char *str);
 int		ft_isdigit(int c);
+void	free_out(char **out);
 #endif
