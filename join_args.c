@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_functions.c                                   :+:      :+:    :+:   */
+/*   join_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 15:10:36 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/09 15:10:39 by mhambary         ###   ########.fr       */
+/*   Created: 2024/06/09 14:34:10 by mhambary          #+#    #+#             */
+/*   Updated: 2024/06/09 14:41:02 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
+char	*join_args(int argc, char **argv)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
-}
+	int		i;
+	int		len;
+	char	*result;
+	int		pos;
 
-void	free_out(char **out)
-{
-	int	i;
-
-	i = 0;
-	if (out == NULL || *out == NULL)
-		return ;
-	while (out[i])
+	i = 1;
+	len = 0;
+	while (i < argc)
+		len += ft_strlen(argv[i++]) + 1;
+	result = (char *)malloc(sizeof(char) * len);
+	if (!result)
+		return (NULL);
+	pos = 0;
+	i = 1;
+	while (i < argc)
 	{
-		free(out[i]);
+		len = 0;
+		while (argv[i][len])
+			result[pos++] = argv[i][len++];
+		if (i < argc - 1)
+			result[pos++] = ' ';
 		i++;
 	}
-	free(out);
-}
-
-int	ft_strlen(char *str)
-{
-	unsigned int	len;
-
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+	result[pos] = '\0';
+	return (result);
 }
