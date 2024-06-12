@@ -23,6 +23,12 @@ int		ft_isdigit(int c);
 void	free_out(char **out);
 char	*join_args(int argc, char **argv);
 int		ft_strlen(char *str);
+int		is_number(char *current_number);
+int		all_are_integers(char **out);
+int		all_are_digits(char **out);
+int		len_splitted_array(char **out);
+int		has_no_duplicates(char **out);
+long	ft_atol(char *str);
 
 typedef struct s_stack
 {

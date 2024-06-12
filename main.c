@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+int	validate_arguments(char **out)
+{
+	if (all_are_digits(out) && all_are_integers(out) && has_no_duplicates(out))
+		return (1);
+	return (0);
+}
+
 int	m(int argc, char **argv)
 {
 	int		i;
@@ -35,13 +42,15 @@ int	m(int argc, char **argv)
 		result = ft_split(joined_args);
 		free(joined_args);
 	}
-	while(result[i])
+	if (!validate_arguments(result))
 	{
-		printf("current number %s\n", result[i]);
-		i++;
+		write(1, "Error\n", 6);
+		free_out(result);
+		system("leaks push_swap");
+		exit(17);
 	}
 	free_out(result);
-//	system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }
 
