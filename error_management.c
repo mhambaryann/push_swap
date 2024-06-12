@@ -6,7 +6,7 @@
 /*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:27:25 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/11 17:10:21 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:24:01 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	len_splitted_array(char **out)
 	int	len;
 
 	len = 0;
-	while(out[len] != NULL)
+	while (out[len] != NULL)
 		len++;
 	return (len);
 }
@@ -50,9 +50,7 @@ int	validate_arguments(char **out)
 	int			len;
 
 	len = len_splitted_array(out);
-	numbers = (long int*)malloc(sizeof(long int*) * len);
+	numbers = (long int *)malloc(sizeof(long int *) * len);
 	if (!numbers)
 		return (NULL);
-
-
 }
