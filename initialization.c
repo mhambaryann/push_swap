@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialization.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/13 16:50:45 by mhambary          #+#    #+#             */
+/*   Updated: 2024/06/13 16:51:22 by mhambary         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	bubble_sort(int	*array, int len)
@@ -68,7 +80,7 @@ t_node	*create_stack(int *sorted_array, int *unsorted_array, int len)
 	t_node	*stack_a;
 	t_node	*new_node;
 	t_node	*last_node;
-	int	i;
+	int		i;
 
 	stack_a = NULL;
 	new_node = NULL;
@@ -95,7 +107,7 @@ t_node	*create_stack(int *sorted_array, int *unsorted_array, int len)
 					new_node->prev = last_node;
 				}
 				last_node = new_node;
-				break;
+				break ;
 			}
 			j++;
 		}

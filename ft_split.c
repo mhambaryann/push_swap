@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/13 16:50:35 by mhambary          #+#    #+#             */
+/*   Updated: 2024/06/13 16:54:54 by mhambary         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 char	*ft_strncpy(char *s1, char *s2, int n)
@@ -20,11 +32,11 @@ int	word_count(char *str)
 	wc = 0;
 	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+		while (str[i] && (str[i] == ' '))
 			i++;
 		if (str[i])
 			wc++;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+		while (str[i] && (str[i] != ' '))
 			i++;
 	}
 	return (wc);
@@ -54,10 +66,10 @@ char	**ft_split(char *str)
 	k = 0;
 	while (str[i])
 	{
-		while (str[i] && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+		while (str[i] && (str[i] == ' '))
 			i++;
 		j = i;
-		while (str[i] && (str[i] != ' ' && str[i] != '\t' && str[i] != '\n'))
+		while (str[i] && (str[i] != ' '))
 			i++;
 		if (i > j)
 		{
