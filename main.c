@@ -16,6 +16,13 @@ int	validate_arguments(char **out)
 {
 	if (all_are_digits(out) && all_are_integers(out) && has_no_duplicates(out))
 		return (1);
+	else
+	{
+		write(1, "Error\n", 6);
+		free_out(result);
+		system("leaks push_swap");
+		exit(17);
+	}
 	return (0);
 }
 
@@ -23,8 +30,7 @@ int	m(int argc, char **argv)
 {
 	int		i;
 	char	**result;
-	char 	*joined_args;
-
+	char	*joined_args;
 
 	i = 0;
 	if (argc == 1 || (argc == 2 && !argv[1][i]))
@@ -42,19 +48,13 @@ int	m(int argc, char **argv)
 		result = ft_split(joined_args);
 		free(joined_args);
 	}
-	if (!validate_arguments(result))
-	{
-		write(1, "Error\n", 6);
-		free_out(result);
-		system("leaks push_swap");
-		exit(17);
-	}
+	validate_arguments(result);
 	free_out(result);
 	system("leaks push_swap");
 	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	m(ac, av);
 	system("leaks push_swap");

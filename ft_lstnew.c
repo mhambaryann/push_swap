@@ -12,14 +12,15 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_lstnew(int value)
+t_node	*ft_lstnew(int index)
 {
-	t_stack	*new_node;
+	t_node	*new_node;
 
-	new_node = (t_stack *)malloc(sizeof(t_stack));
+	new_node = (t_node *)malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
-	new_node->value = value;
+	new_node->index = index;
 	new_node->next = NULL;
+	new_node->prev = NULL;
 	return (new_node);
 }

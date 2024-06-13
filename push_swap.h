@@ -30,12 +30,12 @@ int		len_splitted_array(char **out);
 int		has_no_duplicates(char **out);
 long	ft_atol(char *str);
 
-typedef struct s_stack
+typedef struct s_node
 {
-	int				value;
 	int				index;
-	struct s_stack	*next;
-}	t_stack;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
 
-t_stack	*ft_lstnew(int value);
+t_node	*ft_lstnew(int index);
 #endif
