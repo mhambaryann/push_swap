@@ -6,7 +6,7 @@
 /*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:15:09 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/11 17:10:18 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:52:21 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ int		all_are_digits(char **out);
 int		len_splitted_array(char **out);
 int		has_no_duplicates(char **out);
 long	ft_atol(char *str);
+int		*create_sorted_array(char **out);
+int		*create_unsorted_array(char **out);
 
 typedef struct s_node
 {
 	int				index;
 	struct s_node	*next;
-	struct s_node	*prev;
 }	t_node;
 
+t_node	*create_stack(int *sorted_array, int *unsorted_array, int len);
 t_node	*ft_lstnew(int index);
+void	free_stack(t_node *stack);
+void	ft_lst_add_back(t_node **stack, t_node *new_node);
 #endif

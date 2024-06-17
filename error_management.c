@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhambary <mhambary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:27:25 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/12 15:24:01 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:57:35 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ int	all_are_integers(char **out)
 {
 	int		i;
 	long	num;
+	int		len;
 
 	i = 0;
 	while (out[i])
 	{
 		num = ft_atol(out[i]);
-		if (num >= INT_MAX || num <= INT_MIN)
+		len = ft_strlen(out[i]);
+		if (num >= INT_MAX || num <= INT_MIN || len >= 10)
 			return (0);
 		i++;
 	}

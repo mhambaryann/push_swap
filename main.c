@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +8,7 @@
 /*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:06:12 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/09 16:32:58 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:53:57 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +21,40 @@ int	validate_arguments(char **out)
 	else
 	{
 		write(1, "Error\n", 6);
-		free_out(result);
+		free_out(out);
 		system("leaks push_swap");
 		exit(17);
 	}
 	return (0);
 }
 
+void	print_stack(t_node *stack)
+{
+	t_node	*current;
+
+	current = stack;
+	while (current)
+	{
+		printf("Current index: %d\n", current->index);
+		current = current->next;
+	}
+}
+
+
 int	m(int argc, char **argv)
 {
 	int		i;
 	char	**result;
 	char	*joined_args;
+	t_node	*stack_a;
+	int		len;
+	int		*unsorted_array;
+	int		*sorted_array;
 
 	i = 0;
+	stack_a = NULL;
+	sorted_array = NULL;
+	unsorted_array = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][i]))
 	{
 		system("leaks push_swap");
@@ -43,13 +65,21 @@ int	m(int argc, char **argv)
 	else
 	{
 		joined_args = join_args(argc, argv);
-		if (!joined_args)
-			return (1);
 		result = ft_split(joined_args);
+		unsorted_array = create_unsorted_array(result);
+		sorted_array = create_sorted_array(result);
+		len = len_splitted_array(result);
 		free(joined_args);
 	}
-	validate_arguments(result);
+	if (validate_arguments(result))
+	{
+		stack_a = create_stack(sorted_array, unsorted_array, len);
+		print_stack(stack_a);
+	}
 	free_out(result);
+	free(sorted_array);
+	free(unsorted_array);
+	free_stack(stack_a);
 	system("leaks push_swap");
 	return (0);
 }

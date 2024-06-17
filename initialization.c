@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhambary <mhambary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:50:45 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/13 16:51:22 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:44:28 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	*create_unsorted_array(char **out)
 	unsorted_array = (int *)malloc(sizeof(int) * len_splitted_array(out));
 	if (!unsorted_array)
 		return (NULL);
+	i = 0;
 	while (out[i] != NULL)
 	{
 		unsorted_array[i] = (int)ft_atol(out[i]);
@@ -79,12 +80,11 @@ t_node	*create_stack(int *sorted_array, int *unsorted_array, int len)
 {
 	t_node	*stack_a;
 	t_node	*new_node;
-	t_node	*last_node;
 	int		i;
+	int		j;
 
 	stack_a = NULL;
 	new_node = NULL;
-	last_node = NULL;
 	i = 0;
 	while (i < len)
 	{
@@ -94,19 +94,12 @@ t_node	*create_stack(int *sorted_array, int *unsorted_array, int len)
 			if (unsorted_array[i] == sorted_array[j])
 			{
 				new_node = ft_lstnew(j);
-				if (! new_node)
+				if (!new_node)
 				{
 					free_stack(stack_a);
 					return (NULL);
 				}
-				if (!stack_a)
-					stack_a = new_node;
-				else
-				{
-					last_node->next = new_node;
-					new_node->prev = last_node;
-				}
-				last_node = new_node;
+				ft_lst_add_back(&stack_a, new_node);
 				break ;
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 14:34:10 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/09 14:41:02 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 13:18:48 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*join_args(int argc, char **argv)
 		len += ft_strlen(argv[i++]) + 1;
 	result = (char *)malloc(sizeof(char) * len);
 	if (!result)
-		return (NULL);
+		exit(17);
 	pos = 0;
 	i = 1;
 	while (i < argc)
