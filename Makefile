@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_split.c main.c main_functions.c join_args.c error_management.c ft_atol.c stack_functions.c initialization.c
+SRCS = ft_split.c main.c main_functions.c join_args.c error_management.c ft_atol.c stack_functions.c initialization.c sorting.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 

@@ -1,14 +1,12 @@
-
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhambary <mhambary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:06:12 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/17 15:53:57 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:13:51 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +72,8 @@ int	m(int argc, char **argv)
 	if (validate_arguments(result))
 	{
 		stack_a = create_stack(sorted_array, unsorted_array, len);
+		if (is_sorted(stack_a, len))
+			printf("Is sorted\nyay\n");
 		print_stack(stack_a);
 	}
 	free_out(result);

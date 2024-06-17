@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhambary <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mhambary <mhambary@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:15:09 by mhambary          #+#    #+#             */
-/*   Updated: 2024/06/17 15:52:21 by mhambary         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:12:41 by mhambary         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,13 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
+// stack creation, memory management connected with stack
 t_node	*create_stack(int *sorted_array, int *unsorted_array, int len);
 t_node	*ft_lstnew(int index);
 void	free_stack(t_node *stack);
 void	ft_lst_add_back(t_node **stack, t_node *new_node);
+
+// sorting functions
+
+int	is_sorted(t_node *stack, int len);
 #endif
